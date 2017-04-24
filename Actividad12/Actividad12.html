@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Actividad 12</title>
+    </head>
+
+    <body>
+        <div class = "squares">
+            <div class="squareA">
+                <div class = "texto">Button A</div>
+            </div>
+
+            <div class="squareB">
+                <div class = "texto">Button B</div>
+            </div>
+
+            <div class="squareC">
+                <div class = "texto">Button C</div>
+            </div>
+
+            <div class="squareD">
+                <div class = "texto">Button D</div>
+            </div>
+
+            <div class="squareE">
+                <div class = "texto">Button E</div>
+            </div>
+        </div>
+    </body>
+
+    <style>
+        body
+        {
+            text-align:center;
+            animation-name: colorsDos;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        .texto
+        {
+            color: white;
+            font-size: 20pt;
+            padding-top: 25px;
+        }
+
+        .squareA, .squareB, .squareC, .squareD, .squareE
+        {
+            width: 200px;
+            height: 100px;
+            background-color: rgb(200, 30, 30);
+            border-radius: 20px;
+            text-align: center;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .squareA:hover, .squareB:hover, .squareC:hover, .squareD:hover, .squareE:hover
+        {
+            background-color: rgb(120, 20, 20);
+            transition-property: background-color;
+            transition-duration: .5s;
+        }
+
+        .squareA:hover
+        {
+            -webkit-transform: rotate(90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+
+        .squareB:hover
+        {
+            width: 300px;
+            transition:width 1s, height 1s, background-color 1s, transform 1s;
+        }
+
+        .squareC:hover
+        {
+            animation-name: colors;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        .squareD:hover
+        {
+            width: 180px;
+            height: 80px;
+            transition:width 1s, height 1s, background-color 1s, transform 1s;
+        }
+
+        .squareE:hover
+        {
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        
+        @keyframes colors 
+        {
+            0% { background-color: red; }
+            20% { background-color: orange; }
+            40% { background-color: yellow; }
+            60% { background-color: green; }
+            80% { background-color: blue; }
+            100% { background-color: purple; }
+        }
+
+        @keyframes colorsDos
+        {
+            0% { background-color: rgb(83, 186, 88); }
+            50% { background-color: rgb(186, 83, 83) }
+            100% { background-color: rgb(83, 125, 186) }
+        }
+    </style>
+</html>
