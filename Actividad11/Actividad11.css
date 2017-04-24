@@ -1,0 +1,55 @@
+body 
+{
+    font-family: 'Courier New', monospace;
+    background-image: url("wallpaper.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+div
+{
+	background-color: white;
+	width: 80%;
+	height: 80%;
+	margin: 0 auto;
+}
+
+header, footer
+{
+	background-color: gray;
+}
+
+img
+{
+	width: 320px;
+	height: 240px;
+}
+
+a
+{
+	text-decoration: none;
+	color: blue;
+}
+
+li
+{
+	display: inline;
+	padding-left: 25px;
+}
+
+section
+{
+	overflow: hidden;
+}
+
+article figure img
+{
+	float: left;
+	clear: both;
+}
+
+aside
+{
+	display:inline-block;
+}
