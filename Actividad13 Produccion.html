@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Actividad 13</title>
+    </head>
+
+    <body>
+        <div id = "squares" name = "squares" class = "squares" style = "visibility: hidden">
+            <div class = "squareA" onclick = "body.style.backgroundColor = 'blue';">
+                <div class = "texto">Azul</div>
+            </div>
+
+            <div class = "squareB" onclick = "body.style.backgroundColor = 'red';">
+                <div class = "texto">Rojo</div>
+            </div>
+
+            <div class = "squareC" onclick = "body.style.backgroundColor = 'green';">
+                <div class = "texto">Verde</div>
+            </div>
+
+            <div class = "squareD" onclick = "body.style.backgroundColor = 'yellow';">
+                <div class = "texto">Amarillo</div>
+            </div>
+
+            <div class = "squareE" onclick = "body.style.backgroundColor = 'black';">
+                <div class = "texto">Negro</div>
+            </div>
+        </div>
+    </body>
+
+    <script type="text/javascript">		
+    	function showIt() 
+    	{
+  			document.getElementById("squares").style.visibility = "visible";
+		}
+		setTimeout("showIt()", 3000);
+    </script>
+
+    <style>
+        body
+        {
+            text-align:center;
+        }
+
+        .squares
+        {
+        	transition-duration: .5s;
+        }
+
+        .texto
+        {
+            color: white;
+            font-size: 20pt;
+            padding-top: 25px;
+        }
+
+        .squareA, .squareB, .squareC, .squareD, .squareE
+        {
+            width: 200px;
+            height: 100px;
+            background-color: rgb(200, 200, 255);
+            border-radius: 20px;
+            text-align: center;
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .squareA:hover, .squareB:hover, .squareC:hover, .squareD:hover, .squareE:hover
+        {
+            background-color: rgb(100, 150, 255);
+            transition-property: background-color;
+            transition-duration: .5s;
+        }
+    </style>
+</html>

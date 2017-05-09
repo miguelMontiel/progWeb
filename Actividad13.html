@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Actividad 13</title>
+	</head>
+
+	<body>
+<div class="wrapper">
+ <header>My header!</header>
+ <div class="sidebar">My Sidebar!</div>
+ <div class="content">My Content!</div>
+ <footer>My footer!</footer>
+</div>
+	</body>
+
+	<style type="text/css">
+*, *:before, *:after {
+ box-sizing: border-box;
+} /* si leiste las lecturas relacionadas, ya sabes que es esto! */
+.wrapper{
+ height:1000px;
+ min-width:100%;
+ background-color:#ccc;
+}
+header{
+ padding:1em;
+ background-color:pink;
+ margin:0;
+ height:100px;
+}
+.sidebar{
+ float:left;
+ width:30%;
+ padding:1em;
+ background-color:yellow;
+ height:100%;
+}
+.content{
+ float:left;
+ width:70%;
+ background-color:lightgreen;
+ padding:1em;
+ height:100%;
+}
+footer{
+ position:relative;
+ bottom:0;
+ clear:both;
+ padding:1em;
+ background-color:skyblue;
+ text-align:center;
+}
+	</style>
+</html>

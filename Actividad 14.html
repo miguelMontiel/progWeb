@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+	<head>
+		<title>Actividad 14</title>
+	</head>
+	<body>
+    <h1>Sistema de envio</h1>
+
+      <div>
+        <p>Solo HTML</p>
+        <input type="checkbox"> 
+        <p>Usando solo un HTML se puede utilizar un Checkbox, sin embargo no se guarda el valor de si es verdadero al haberse presionado, o falso, si se vuelve a presionar. Para esto si es necesario otro lenguaje dinamico que guarde dicho valor.</p>
+      </div>
+
+      <div id="content">
+        <div class="message">
+          El servicio está: <span id="servicio" onclick="prenderApagar()"></span>
+        </div>
+      </div>
+
+      <h2>Aprende y apaga los botones segun lo que dicen</h2>
+
+      <div name = "general" id = "boton1" class = "boton" onclick = "prenderApagarB3()">
+      Boton 3!
+      </div>
+
+      <div name = "general" id = "boton2" class = "boton" onclick = "prenderApagarB1()">
+      Boton 1!
+      </div>
+
+      <div name = "general" id = "boton3" class = "boton" onclick = "prenderApagarB4()">
+      Boton 4!
+      </div>
+
+      <div name = "general" id = "boton4" class = "boton" onclick = "prenderApagarB5()">
+      Boton 5!
+      </div>
+
+      <div name = "general" id = "boton5" class = "boton" onclick = "prenderApagarTodos()">
+      Todos los botones!
+      </div>
+
+		<script type="text/javascript">   
+      var myService = 0;   
+
+      var siSer = document.getElementById('servicio');
+      siSer.className = 'st';
+
+      function prenderApagar()
+      {
+        if (myService) 
+        {
+          var siSer = document.getElementById('servicio');
+          siSer.className = 'st';
+          myService = 0;
+        } 
+        else 
+        {
+          var noSer = document.getElementById('servicio');
+          noSer.className = 'sh';
+          myService = 1;
+        }
+      }
+
+      function prenderApagarB3()
+      {
+        if (myService) 
+        {
+          var siSer = document.getElementById('boton3');
+          siSer.className = 'btnPrendido';
+          myService = 0;
+        } 
+        else 
+        {
+          var noSer = document.getElementById('boton3');
+          noSer.className = 'btnApagado';
+          myService = 1;
+        }
+      }
+
+      function prenderApagarB1()
+      {
+        if (myService) 
+        {
+          var siSer = document.getElementById('boton1');
+          siSer.className = 'btnPrendido';
+          myService = 0;
+        } 
+        else 
+        {
+          var noSer = document.getElementById('boton1');
+          noSer.className = 'btnApagado';
+          myService = 1;
+        }
+      }
+
+      function prenderApagarTodos()
+      {
+        if (myService) 
+        {
+          var siSer = document.getElementById('boton1');
+          siSer.className = 'btnPrendido';
+
+          var siSer = document.getElementById('boton2');
+          siSer.className = 'btnPrendido';
+
+          var siSer = document.getElementById('boton3');
+          siSer.className = 'btnPrendido';
+
+          var siSer = document.getElementById('boton4');
+          siSer.className = 'btnPrendido';
+
+          var siSer = document.getElementById('boton5');
+          siSer.className = 'btnPrendido';
+
+          myService = 0;
+        } 
+        else 
+        {
+          var noSer = document.getElementById('boton1');
+          noSer.className = 'btnApagado';
+
+          var noSer = document.getElementById('boton2');
+          noSer.className = 'btnApagado';
+
+          var noSer = document.getElementById('boton3');
+          noSer.className = 'btnApagado';
+
+          var noSer = document.getElementById('boton4');
+          noSer.className = 'btnApagado';
+
+          var noSer = document.getElementById('boton5');
+          noSer.className = 'btnApagado';
+          myService = 1;
+        }
+      }
+
+      function prenderApagarB4()
+      {
+        if (myService) 
+        {
+          var siSer = document.getElementById('boton4');
+          siSer.className = 'btnPrendido';
+          myService = 0;
+        } 
+        else 
+        {
+          var noSer = document.getElementById('boton4');
+          noSer.className = 'btnApagado';
+          myService = 1;
+        }
+      }
+
+      function prenderApagarB5()
+      {
+        if (myService) 
+        {
+          var siSer = document.getElementById('boton5');
+          siSer.className = 'btnPrendido';
+          myService = 0;
+        } 
+        else 
+        {
+          var noSer = document.getElementById('boton5');
+          noSer.className = 'btnApagado';
+          myService = 1;
+        }
+      }
+		</script>
+
+		<noscript>
+			Your browser doesn't support or has disabled JavaScript
+		</noscript>
+
+		<style type="text/css">
+    div 
+    {
+      margin: 1em;
+      font-family: Helvetica, Arial, sans;
+    }
+    h1 
+    {
+      font-family: Helvetica, Arial, sans;
+      font-weight: bold;
+      margin: 1em;
+    }
+    #servicio
+    {
+      cursor: pointer;
+    }
+    .st 
+    {
+      padding: 0.2em 0.5em;
+      background-color: green;
+    }
+    .st:before 
+    {
+      content: "disponible";
+      color: white;
+    }
+    .sh 
+    {
+      padding: 0.2em 0.5em;
+      background-color: red;
+    }
+    .sh:before 
+    {
+      content: "no disponible";
+      color: white;
+    }
+
+    div[name = "general"]
+    {
+      width: 100px;
+      height: 50px;
+      display: inline-block;
+      cursor: pointer;
+      color: white;
+    }
+
+    .boton
+    {
+      background-color: gray;
+    }
+
+    .btnApagado
+    {
+      background-color: red;
+    }
+    .btnPrendido
+    {
+      background-color: green;
+    }
+		</style>
+	</body>
+</html>
