@@ -1,0 +1,185 @@
+html 
+{
+    background-color: black;
+}
+
+body 
+{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    background-image: url("Images/wallpaper.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    color: white;
+    font-weight: 100;
+    opacity: 1;
+    transition: 10s opacity;
+}
+
+body.fade-out 
+{
+    opacity: 0;
+    transition: none;
+}
+img
+{
+    border-radius: 5px;
+}
+
+input
+{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 20pt;
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 1);
+    border-radius: 3px;
+
+    transition: background-color .5s;
+    -webkit-transition: background-color .5s;
+    -moz-transition: background-color .5s;
+}
+input:hover
+{
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+span
+{
+    padding: 5px;
+    text-align: justify;
+}
+
+p
+{
+    padding: 5px 20px;
+}
+
+label
+{
+    margin-bottom: 0 auto;
+    font-size: 50pt;
+    color: black;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.div_Audio
+{
+    float: left;
+}
+
+.div_imagen
+{
+    width: 320px;
+    height: 240px;
+    display: inline;
+}
+
+.imagen_Area, .imagen_Mapa
+{
+    position: relative;
+    opacity: 0.9;
+    transition: 0.3s ease;
+    cursor: pointer;
+    border: 3px solid rgba(255, 255, 255, .25);
+}
+.imagen_Area:hover, .imagen_Mapa:hover
+{
+    transform: scale(1.5, 1.5);
+    opacity: 1;
+    border: 1px solid rgba(255, 255, 255, .5);
+}
+
+
+.div_historia, .div_Descripcion
+{
+    background-color: rgba(0, 0, 0, 0.25);
+    font-size: 15pt;
+    padding: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 1px;
+    display: inline-block;
+    height: 375px;
+    width: 80%;
+    overflow: auto;
+    text-align: left;
+
+    transition: background-color .5s;
+    -webkit-transition: background-color .5s;
+    -moz-transition: background-color .5s;
+}
+.div_historia:hover, .div_Descripcion:hover
+{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.buttonSiguiente
+{
+    float: right;
+}
+.buttonAtras
+{
+    float: left;
+}
+.buttonSiguiente, .buttonAtras
+{
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    width: 5%;
+    height: 375px;
+
+    transition: background-color .5s;
+    -webkit-transition: background-color .5s;
+    -moz-transition: background-color .5s;
+}
+.buttonSiguiente:hover, .buttonAtras:hover
+{
+    background-color: rgba(255, 255, 255, .6);
+}
+
+.citacion
+{
+    font-style: italic;
+}
+
+.Villano
+{
+    color: red;
+    font-style: italic;
+}
+
+.Sonidos
+{
+    color: rgb(66, 134, 244);
+}
+
+.finalMalo
+{
+    color: red;
+    font-size: 50pt;
+}
+
+button[type = "submit"]
+{
+    font-size: 15pt;
+    cursor: pointer;
+    width: 125px;
+    height: 50px;
+}
+
+h2
+{
+    text-align: center;
+}

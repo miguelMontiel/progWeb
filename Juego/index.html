@@ -1,0 +1,1077 @@
+<!DOCTYPE HTML>
+<html>
+    <meta charset="utf-8">
+    <head>
+        <link href = 'https://fonts.googleapis.com/css?family=Roboto:400,100' rel = 'stylesheet' type = 'text/css'>
+        <script src = "jquery.js"></script>
+        <link href = "css.css" rel="stylesheet">
+        <title>Titulo de Juego</title>
+    </head>
+
+    <body>
+
+        <div class = "div_imagen">
+            <img src = "Images/Area 1.png" class = "imagen_Area" id = "imagen_Area" width = "320" height = "240">
+			<img src = "Images/mapaa.png" class = "imagen_Mapa" id = "imagen_Mapa" width = "100" height = "100">
+        </div>
+
+        <div class = "div_historia" id = "div_historia">
+            <span class = "textoHistoria" id = "textoHistoria">
+            <!-- Aqui es donde va el texto del juego -->
+            </span>
+        </div>
+
+        <div class = "buttonSiguiente" onClick = "Avanzar()">
+            <label>
+                >
+            </label>
+        </div>
+
+        <div class = "buttonAtras" onClick = "Retroseder()">
+            <label>
+                <
+            </label>
+        </div>
+
+        <div class = "div_comandos">
+            <input type = "text" id = "comandos" class = "comandos" name = "comandos" size = "30" autocomplete = "off" placeholder = "Comandos: Inspeccionar, Usar, Abrir, Unir" autofocus>
+        </div>
+
+        <footer>
+            <div class = "div_Audio">
+                <audio controls id = "cancion">
+                    <source src = "Music/CuartosSinAcertijos.mp3" type = "audio/mpeg">
+                </audio> 
+                <audio controls id = "cancion2">
+                    <source src = "Music/CuartosConAcertijos.mp3" type = "audio/mpeg">
+                </audio>
+                <audio controls id = "cancion3">
+                    <source src="Music/hit.m4a" type="audio/mp4" />
+                </audio>
+                <audio controls id = "cancion4">
+                    <source src="Music/sfx1.m4a" type="audio/mp4" />
+                </audio>
+            </div>
+        </footer>
+    </body>
+
+    <script type="text/javascript">
+        document.body.className += ' fade-out';
+        var cancion = document.getElementById("cancion"); 
+        var cancion2 = document.getElementById("cancion2"); 
+        cancion.volume = .2;
+        cancion.controls = false;
+        cancion.loop = true;
+        cancion2.volume = .2;
+        cancion2.controls = false;
+        cancion2.loop = true;
+        cancion3.volume = .3;
+        cancion3.controls = false;
+        cancion3.loop = false;
+        cancion4.volume = .3;
+        cancion4.controls = false;
+        cancion4.loop = false;
+
+
+        var llave = false;
+        var puerta = false;
+        var sillon = false;
+        var tableta = false;
+        var puertaAbierta = false;
+        var pintura1 = false;
+        var pintura2 = false;
+        var pintura3 = false;
+        var pintura4 = false;
+        var pintura5 = false;
+        var estrella1 = false;
+        var estrella2 = false;
+        var periodico = false;
+        var puertaCabina = false;
+
+        var comando = document.getElementById("comandos");
+
+        $(function() 
+        {
+            $('body').removeClass('fade-out');
+            cancion.play();
+        });
+
+        var i = 1;
+        var k = 1;
+        var y = 56;
+
+        function Avanzar() 
+        {  
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", "Script.html", false);
+            rawFile.onreadystatechange = function ()
+            {
+                if(rawFile.readyState === 4)
+                {
+                    if(rawFile.status === 200 || rawFile.status == 0)
+                    {
+                        $(function () 
+                        {
+                            switch(i)
+                            {
+                                case 1:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 2:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 3:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 4:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    document.getElementById("imagen_Mapa").src = "Images/mapa.png";
+                                    i++;
+                                break;
+
+                                case 5:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 6:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 7:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 8:
+                                    if(llave)
+                                    {
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        i++;
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "Debe de haber algo más que pueda hacer aquí...";
+                                    }
+                                break;
+
+                                case 9:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 10:
+                                    if(puerta && llave)
+                                    {
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        i++;
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "La llave podría funcionar con la puerta?";
+                                    }
+                                break;
+
+                                case 11:
+                                    if(sillon && puerta && llave)
+                                    {
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        i++;
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "Debe de haber algo mas aquí.";
+                                    }
+                                break;
+
+                                case 12:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 13:
+                                    if(tableta && sillon && puerta && llave)
+                                    {
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        alert("miguelmg.comli.com/CodigoPuerta.html");
+                                        i++;
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "Deberia de usar esta memoria.";
+                                    }
+                                break;
+
+                                case 14:
+                                    if(puertaAbierta && tableta && sillon && puerta && llave)
+                                    {
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        i++;
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "Deberia de usar esta memoria.";
+                                    }
+                                break;
+
+                                case 15:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 16:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 17:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    document.getElementById("imagen_Area").src = "Images/pasajeros.png";
+                                    document.getElementById("imagen_Area").src = "Images/mapa2.png";
+                                    i++;
+                                break;
+
+                                case 18:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 19:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 20:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 21:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 22:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 23:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 24:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 25:
+                                    if(puertaAbierta && tableta && sillon && puerta && llave && pintura1 && pintura2 && pintura3 && pintura4 && pintura5)
+                                    {
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        i++;
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "No he revisado todas las pinturas. Me puede faltar algo.";
+                                    }
+                                break;
+
+                                case 26:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 27:
+                                    if(puertaAbierta && tableta && sillon && puerta && llave && pintura1 && pintura2 && pintura3 && pintura4 && pintura5 && periodico)
+                                    {
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        i++;
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "No he checado el periodico, deberia hacerlo.";
+                                    }
+                                break;
+
+                                case 28:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 29:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 30:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 31:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 32:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 33:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 34:
+                                // Aqui es donde voy a determinar si el usuario consigue el final bueno o el final malo
+                                    do
+                                    {
+                                        if(puertaAbierta && tableta && sillon && puerta && llave && pintura1 && pintura2 && pintura3 && pintura4 && pintura5 && periodico && estrella1 && estrella2)
+                                        {
+                                            showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+y), 0, 50);  
+                                            y++;
+                                        }
+                                        else
+                                        {
+                                            document.getElementById("textoHistoria").innerHTML = "... ... ... No pasa nada.";
+                                            k++;
+                                            if(k == 3)
+                                            {
+                                                showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                                i++;
+                                            }
+                                        }
+                                    }while(k < 4);
+                                break;
+
+                                case 35:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50); 
+                                    cancion.pause(); 
+                                    i++;
+                                break;
+
+                                case 36:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50); 
+                                    cancion2.play(); 
+                                    i++;
+                                break;
+
+                                case 37:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 38:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 39:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 40:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 41:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 42:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 43:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 44:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 45:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 46:
+                                    if(puertaAbierta && tableta && sillon && puerta && llave && pintura1 && pintura2 && pintura3 && pintura4 && pintura5 && periodico && estrella1 && estrella2)
+                                    {
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        cancion4.play();
+                                        i++;
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "No, no son esas. Que decia la pista?. 'Andromeda comparte tres estrellas. Mientras que Pegaso comparte dos.'";
+                                    }
+                                break;
+
+                                case 47:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 48:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 49:
+                                    if(puertaAbierta && tableta && sillon && puerta && llave && pintura1 && pintura2 && pintura3 && pintura4 && pintura5 && periodico && estrella1 && estrella2 && puertaCabina)
+                                    {
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        document.getElementById("imagen_Area").src = "Images/cabina.png";
+                                        document.getElementById("imagen_Area").src = "Images/mapa3.png";
+                                        i++;
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "Tengo que apurarme a abrir la puerta!";
+                                    }
+                                break;
+
+                                case 50:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 51:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 52:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    cancion3.play();
+                                    i++;
+                                break;
+
+                                case 53:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50); 
+                                    i++;
+                                break;
+
+                                case 54:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+
+                                case 55:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    i++;
+                                break;
+                                default:
+                                    document.getElementById("div_historia").innerHTML = "¡Gracias por jugar! ¿Conseguiste los dos finales? Si quieres volver a jugar solo refresca esta pagina.";
+                                break;
+                            }
+                            if(i == 34 && estrella1 && estrella2)
+                            {
+                                switch(y)
+                                {
+                                    case 56:
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+y), 0, 50); 
+                                        cancion4.play(); 
+                                        y++;
+                                    break;
+
+                                    case 57:
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+y), 0, 50);  
+                                        y++;
+                                    break;
+
+                                    case 58:
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+y), 0, 50);  
+                                        document.getElementById("imagen_Area").src = "Images/cabina.png";
+                                        y++;
+                                    break;
+
+                                    case 59:
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+y), 0, 50);  
+                                        y++;
+                                    break;
+
+                                    case 60:
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+y), 0, 50);  
+                                        y++;
+                                    break;
+
+                                    default:
+                                    break;
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+            rawFile.send(null);
+        }
+
+        function Retroseder() 
+        {  
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", "Script.html", false);
+            rawFile.onreadystatechange = function ()
+            {
+                if(rawFile.readyState === 4)
+                {
+                    if(rawFile.status === 200 || rawFile.status == 0)
+                    {
+                        $(function () 
+                        {
+                            switch(i)
+                            {
+                                case 1:
+                                    showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                break;
+
+                                case 2:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 3:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 4:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+
+                                break;
+
+                                case 5:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+
+                                break;
+
+                                case 6:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 7:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                break;
+
+                                case 8:
+                                    if(llave)
+                                    {
+                                        i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "Debe de haber algo más que pueda hacer aquí...";
+                                    }
+                                break;
+
+                                case 9:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                break;
+
+                                case 10:
+                                    if(puerta && llave)
+                                    {
+                                        i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "La llave podría funcionar con la puerta?";
+                                    }
+                                break;
+
+                                case 11:
+                                    if(sillon && puerta && llave)
+                                    {
+                                        i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "Debe de haber algo mas aquí.";
+                                    }
+                                break;
+
+                                case 12:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 13:
+                                    if(tableta && sillon && puerta && llave)
+                                    {
+                                        i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        alert("miguelmg.comli.com/CodigoPuerta.html");
+                                        
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "Deberia de usar esta memoria.";
+                                    }
+                                break;
+
+                                case 14:
+                                    if(puertaAbierta && tableta && sillon && puerta && llave)
+                                    {
+                                        i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "Deberia de usar esta memoria.";
+                                    }
+                                break;
+
+                                case 15:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 16:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 17:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    document.getElementById("imagen_Area").src = "Images/pasajeros.png";
+                                    // Aqui cambiar imagen del mapa
+                                    
+                                break;
+
+                                case 18:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 19:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 20:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 21:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 22:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 23:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 24:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 25:
+                                    if(puertaAbierta && tableta && sillon && puerta && llave && pintura1 && pintura2 && pintura3 && pintura4 && pintura5)
+                                    {
+                                        i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        document.getElementById("imagen_Area").src = "Images/pasajeros.png";
+                                        
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "No he revisado todas las pinturas. Me puede faltar algo.";
+                                    }
+                                break;
+
+                                case 26:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 27:
+                                    if(puertaAbierta && tableta && sillon && puerta && llave && pintura1 && pintura2 && pintura3 && pintura4 && pintura5 && periodico)
+                                    {
+                                        i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "No he checado el periodico, deberia hacerlo.";
+                                    }
+                                break;
+
+                                case 28:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 29:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 30:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 31:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 32:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 33:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 34:
+                                // Aqui es donde voy a determinar si el usuario consigue el final bueno o el final malo
+                                    do
+                                    {
+                                        if(puertaAbierta && tableta && sillon && puerta && llave && pintura1 && pintura2 && pintura3 && pintura4 && pintura5 && periodico && estrella1 && estrella2)
+                                        {
+                                            showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+y), 0, 50);  
+                                            y++;
+                                        }
+                                        else
+                                        {
+                                            document.getElementById("textoHistoria").innerHTML = "... ... ... No pasa nada.";
+                                            k++;
+                                            if(k == 3)
+                                            {
+                                                i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                                
+                                            }
+                                        }
+                                    }while(k < 4);
+                                break;
+
+                                case 35:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50); 
+                                    cancion.pause(); 
+                                    
+                                break;
+
+                                case 36:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50); 
+                                    cancion2.play(); 
+                                    
+                                break;
+
+                                case 37:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 38:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 39:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 40:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 41:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 42:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 43:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 44:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 45:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 46:
+                                    if(puertaAbierta && tableta && sillon && puerta && llave && pintura1 && pintura2 && pintura3 && pintura4 && pintura5 && periodico && estrella1 && estrella2)
+                                    {
+                                        i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        cancion4.play();
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "No, no son esas. Que decia la pista?. 'Andromeda comparte tres estrellas. Mientras que Pegaso comparte dos.'";
+                                    }
+                                break;
+
+                                case 47:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 48:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 49:
+                                    if(puertaAbierta && tableta && sillon && puerta && llave && pintura1 && pintura2 && pintura3 && pintura4 && pintura5 && periodico && estrella1 && estrella2 && puertaCabina)
+                                    {
+                                        i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                        
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("textoHistoria").innerHTML = "Tengo que apurarme a abrir la puerta!";
+                                    }
+                                break;
+
+                                case 50:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 51:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 52:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+
+                                case 53:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    cancion3.play();
+                                break;
+
+                                case 54:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                   
+                                break;
+
+                                case 55:
+                                    i--; showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+i), 0, 50);  
+                                    
+                                break;
+                                default:
+                                break;
+                            }
+                            if(i == 34 && estrella1 && estrella2)
+                            {
+                                switch(y)
+                                {
+                                    case 56:
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+y), 0, 50); 
+                                        cancion4.play();
+                                        y--; 
+                                    break;
+
+                                    case 57:
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+y), 0, 50);  
+                                        y--;
+                                    break;
+
+                                    case 58:
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+y), 0, 50); 
+                                        y--; 
+                                    break;
+
+                                    case 59:
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+y), 0, 50);  
+                                        y--;
+                                    break;
+
+                                    case 60:
+                                        showText("#textoHistoria", $("#textoHistoria").load("Script.html #"+y), 0, 50); 
+                                        y--; 
+                                    break;
+
+                                    default:
+                                        document.getElementById("div_historia").innerHTML = "¡Gracias por jugar! ¿Conseguiste los dos finales? Si quieres volver a jugar solo refresca esta pagina.";
+                                    break;
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+            rawFile.send(null);
+        }
+
+        $("#comandos").keypress(function(event) 
+        {
+            if (event.which == 13)
+            {
+                if(comandos.value == "Inspeccionar tableta" || comandos.value == "Inspeccionar Tableta" || comandos.value == "inspeccionar Tableta" || comandos.value == "inspeccionar tableta")
+                {
+                    alert("Parece estar apagada. No tiene nada que pueda utilizar, sera mejor que recuerde que esta aqui para cualquier cosa. Hmm? Hay algo en la parte de atras.");
+                    document.getElementById("textoHistoria").innerHTML = "HAZ CONSEGUIDO (MITAD DE LLAVE)";
+                }
+
+                if(comandos.value == "usar tableta" || comandos.value == "Usar Tableta" || comandos.value == "usar Tableta" || comandos.value == "Usar tableta" || comandos.value == "Usar Bolsa" || comandos.value == "Usar bolsa" || comandos.value == "usar Bolsa" || comandos.value == "usar bolsa")
+                {
+                    alert("¿Usarla en que?");
+                }
+
+                if(comandos.value == "Inspeccionar bolsa" || comandos.value == "Inspeccionar Bolsa" || comandos.value == "inspeccionar bolsa" || comandos.value == "inspeccionar Bolsa")
+                {
+                    alert("Hay una mitad de una llave aqui, tal vez podria...");
+                    document.getElementById("textoHistoria").innerHTML = "HAZ CONSEGUIDO (MITAD DE LLAVE 2)";
+                }
+
+                if(comandos.value == "Unir llave" || comandos.value == "Unir Llave" || comandos.value == "unir Llave" || comandos.value == "unir llave" || comandos.value == "Unir llaves" || comandos.value == "Unir Llaves" || comandos.value == "unir Llaves" || comandos.value == "unir llaves")
+                {
+                    document.getElementById("textoHistoria").innerHTML = "HAZ CONSEGUIDO (Llave)";
+                    llave = true;
+                }
+
+                if(comandos.value == "Inspeccionar puerta" || comandos.value == "Inspeccionar Puerta" || comandos.value == "inspeccionar Puerta" || comandos.value == "inspeccionar puerta")
+                {
+                    alert("No parece tener ningun tipo de cerradura, o algo similar. Pero se mantiene cerrada, parece que no la podre abrir con esta llave...");
+                    puerta = true;
+                }
+
+                if(comandos.value == "Inspeccionar ventana" || comandos.value == "Inspeccionar Ventana" || comandos.value == "inspeccionar Ventana" || comandos.value == "inspeccionar ventana")
+                {
+                    alert("Cerrada. Es mas que obvio que estoy en un avion, aunque no puedo abrir esta ventana por alguna razon.");
+                }
+
+                if(comandos.value == "Inspeccionar sillon" || comandos.value == "Inspeccionar Sillon" || comandos.value == "inspeccionar Sillon" || comandos.value == "inspeccionar sillon" || comandos.value == "Inspeccionar Almohada" || comandos.value == "Inspeccionar almohada" || comandos.value == "inspeccionar Almohada" || comandos.value == "Inspeccionar almohada")
+                {
+                    alert("Hay algo aqui...");
+                    document.getElementById("textoHistoria").innerHTML = "HAZ CONSEGUIDO (Memoria)";
+                    sillon = true;
+                }
+
+                if(comandos.value == "Usar memoria" || comandos.value == "Usar Memoria" || comandos.value == "usar memoria" || comandos.value == "usar Memoria") 
+                {
+                    document.getElementById("textoHistoria").innerHTML = "HAZ CONSEGUIDO (Tableta con Memoria)";
+                    tableta = true;
+                }
+
+                if(comandos.value == "Abrir puerta 123" || comandos.value == "Abrir Puerta 123")
+                {
+                    document.getElementById("textoHistoria").innerHTML = "Click!";
+                    puertaAbierta = true;
+                }
+
+                if(comandos.value == "Inspeccionar Pintura 1" || comandos.value == "Inspeccionar pintura 1" || comandos.value == "inspeccionar Pintura 1" || comandos.value == "inspeccionar pintura 1")
+                {
+                    document.getElementById("textoHistoria").innerHTML = "Hmm... Si. Ya veo, si. Es una pintura";
+                    document.getElementById("imagen_Area").src = "Images/pintura1.jpg";
+                    alert("Andromeda");
+                    pintura1 = true;
+                }
+
+                if(comandos.value == "Inspeccionar Pintura 2" || comandos.value == "Inspeccionar pintura 2" || comandos.value == "inspeccionar pintura 2" || comandos.value == "inspeccionar Pintura 2")
+                {
+                    document.getElementById("textoHistoria").innerHTML = "Puede haber algo por atras... ... Nada.";
+                    document.getElementById("imagen_Area").src = "Images/pintura2.jpg";
+                    alert("Fenix");
+                    pintura2 = true;
+                }
+
+                if(comandos.value == "Inspeccionar Pintura 3" || comandos.value == "Inspeccionar pintura 3" || comandos.value == "inspeccionar pintura 3" || comandos.value == "inspeccionar Pintura 3")
+                {
+                    document.getElementById("textoHistoria").innerHTML = "Tal vez si la volteo... *THUD* Uups! No no, mejor no.";
+                    document.getElementById("imagen_Area").src = "Images/pintura3.jpg";
+                    alert("Pegaso");
+                    pintura3 = true;
+                }
+
+                if(comandos.value == "Inspeccionar Pintura 4" || comandos.value == "Inspeccionar pintura 4" || comandos.value == "inspeccionar pintura 4" || comandos.value == "inspeccionar Pintura 4")
+                {
+                    document.getElementById("textoHistoria").innerHTML = "¿Que puedo hacer con esto...?";
+                    document.getElementById("imagen_Area").src = "Images/pintura4.jpg";
+                    alert("Cisne");
+                    pintura4 = true;
+                }
+
+                if(comandos.value == "Inspeccionar Pintura 5" || comandos.value == "Inspeccionar pintura 5" || comandos.value == "inspeccionar pintura 5" || comandos.value == "inspeccionar Pintura 5")
+                {
+                    document.getElementById("textoHistoria").innerHTML = "¿Que significa cada una de estas pinturas?";
+                    document.getElementById("imagen_Area").src = "Images/pintura5.jpg";
+                    alert("Dragon");
+                    pintura5 = true;
+                }
+
+                if(comandos.value == "Inspeccionar Periodico" || comandos.value == "Inspeccionar periodico" || comandos.value == "inspeccionar periodico" || comandos.value == "inspeccionar Periodico")
+                {
+                    periodico = true;
+                }
+
+                if(comandos.value == "Inspeccionar Estrella 5" || comandos.value == "Inspeccionar estrella 5" || comandos.value == "inspeccionar estrella 5" || comandos.value == "inspeccionar Estrella 5")
+                {
+                    estrella1 = true;
+                    document.getElementById("textoHistoria").innerHTML = "Prendio esta estrella, eso es bueno?";
+                }
+
+                if(comandos.value == "Inspeccionar Estrella 7" || comandos.value == "Inspeccionar estrella 7" || comandos.value == "inspeccionar estrella 7" || comandos.value == "inspeccionar Estrella 7")
+                {
+                    document.getElementById("textoHistoria").innerHTML = "Esta tambien prendio!";
+                    estrella2 = true;
+                }
+
+                if(comandos.value == "Abrir Cabina" || comandos.value == "Abrir cabina" || comandos.value == "abrir cabina" || comandos.value == "abrir Cabina")
+                {
+                    puertaCabina = true;
+                }
+
+                event.currentTarget.value = "";
+            }
+        });
+
+        var showText = function (target, message, index, interval) 
+        {   
+            if (index < message.length) 
+            {
+                $(target).append(message[index++]);
+                setTimeout(function () 
+                { 
+                    showText(target, message, index, interval); 
+                }, interval);
+            }
+        }
+    </script>
+
+</html>
